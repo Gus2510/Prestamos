@@ -8,59 +8,130 @@
 </head>
 <body>
 
-    <div class="dashboard">
+<div class="layout">
 
-        <aside class="sidebar">
-            <h2>Préstamos</h2>
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">$</div>
+            <div>
+                <h2>Prestamos</h2>
+                <span>Panel administrativo</span>
+            </div>
+        </div>
 
-            <nav>
-                <a href="#" class="active">Inicio</a>
-                <a href="#">Clientes</a>
-                <a href="#">Préstamos</a>
-                <a href="#">Pagos</a>
-                <a href="#">Reportes</a>
-                <a href="#">Configuración</a>
-                <a href="login.html" class="logout">Cerrar sesión</a>
-            </nav>
-        </aside>
+        <nav class="menu">
+            <a href="#" class="active">🏠 Dashboard</a>
+            <a href="#">👥 Clientes</a>
+            <a href="#">💵 Préstamos</a>
+            <a href="#">💰 Pagos</a>
+            <a href="#">📊 Reportes</a>
+            <a href="#">⚙ Configuración</a>
+        </nav>
 
-        <main class="main-content">
+        <a href="login.html" class="logout">🚪 Cerrar sesión</a>
+    </aside>
 
-            <header class="topbar">
+    <main class="main">
+
+        <header class="topbar">
+            <div>
                 <h1>Dashboard</h1>
-                <span>Usuario: Gustavo</span>
-            </header>
+                <p>Resumen general del sistema de préstamos</p>
+            </div>
 
-            <section class="welcome">
-                <h2>Bienvenido al Sistema de Préstamos</h2>
-                <p>Resumen general de la actividad del sistema.</p>
-            </section>
+            <div class="user-box">
+                <input type="text" placeholder="Buscar...">
+                <span class="notification">🔔</span>
+                <div class="user">
+                    <div class="avatar">G</div>
+                    <div>
+                        <strong>Gustavo</strong>
+                        <small>Administrador</small>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-            <section class="cards">
-                <div class="card">
-                    <h3>Clientes registrados</h3>
-                    <p>135</p>
+        <section class="summary">
+            <div class="summary-card">
+                <span>Clientes registrados</span>
+                <h3>135</h3>
+                <p class="positive">+12 este mes</p>
+            </div>
+
+            <div class="summary-card">
+                <span>Préstamos activos</span>
+                <h3>48</h3>
+                <p class="positive">+5 nuevos</p>
+            </div>
+
+            <div class="summary-card">
+                <span>Pagos del día</span>
+                <h3>$12,350</h3>
+                <p class="positive">Buen avance</p>
+            </div>
+
+            <div class="summary-card warning">
+                <span>Préstamos vencidos</span>
+                <h3>5</h3>
+                <p class="negative">Requieren atención</p>
+            </div>
+        </section>
+
+        <section class="content-grid">
+
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Actividad reciente</h2>
+                    <a href="#">Ver todo</a>
                 </div>
 
-                <div class="card">
-                    <h3>Préstamos activos</h3>
-                    <p>48</p>
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Movimiento</th>
+                            <th>Monto</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Juan Pérez</td>
+                            <td>Pago registrado</td>
+                            <td>$850</td>
+                            <td><span class="badge success">Pagado</span></td>
+                        </tr>
+                        <tr>
+                            <td>María López</td>
+                            <td>Nuevo préstamo</td>
+                            <td>$5,000</td>
+                            <td><span class="badge pending">Activo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Carlos Ruiz</td>
+                            <td>Pago pendiente</td>
+                            <td>$600</td>
+                            <td><span class="badge danger">Vencido</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <div class="card">
-                    <h3>Pagos del día</h3>
-                    <p>$12,350</p>
-                </div>
+            <div class="panel side-panel">
+                <h2>Acciones rápidas</h2>
 
-                <div class="card alert">
-                    <h3>Préstamos vencidos</h3>
-                    <p>5</p>
-                </div>
-            </section>
+                <button>+ Nuevo cliente</button>
+                <button>+ Nuevo préstamo</button>
+                <button>Registrar pago</button>
+                <button>Generar reporte</button>
+            </div>
 
-        </main>
+        </section>
 
-    </div>
+    </main>
+
+</div>
 
 </body>
 </html>
