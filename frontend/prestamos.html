@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Préstamos - Sistema de Préstamos</title>
     <link rel="stylesheet" href="css/prestamos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 
@@ -12,7 +13,7 @@
 
     <aside class="sidebar">
         <div class="logo">
-            <div class="logo-icon">$</div>
+            <div class="logo-icon"><i class="bi bi-clipboard-check-fill"></i></div>
             <div>
                 <h2>Prestamos</h2>
                 <span>Panel administrativo</span>
@@ -20,15 +21,15 @@
         </div>
 
         <nav class="menu">
-            <a href="dashboard.html">🏠 Dashboard</a>
-            <a href="profesores.html"> 👨‍🏫 Profesores</a>
-            <a href="materiales.html">📦 Materiales</a>
-            <a href="prestamos.html" class="active">💵 Préstamos</a>
-            <a href="reportes.html" >📊 Reportes</a>
-            <a href="configuracion.html">⚙ Configuración</a>
+            <a href="dashboard.html"><i class="bi bi-house-door-fill"></i> Principal</a>
+            <a href="profesores.html"> <i class="bi bi-people-fill"></i> Profesores</a>
+            <a href="materiales.html"><i class="bi bi-box-seam-fill"></i> Materiales</a>
+            <a href="prestamos.html" class="active"><i class="bi bi-clipboard-check-fill"></i> Préstamos</a>
+            <a href="reportes.html" > <i class="bi bi-bar-chart-fill"></i> Reportes</a>
+            <a href="configuracion.html"><i class="bi bi-gear-fill"></i> Configuración</a>
         </nav>
 
-        <a href="login.html" class="logout">🚪 Cerrar sesión</a>
+        <a href="login.html" class="logout"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a>
     </aside>
 
     <main class="main">
@@ -57,17 +58,13 @@
             <div class="panel-header">
                 <h2>Lista de préstamos</h2>
                 <span>3 registros</span>
-            </div>
-
+        </div>
             <table>
                 <thead>
                     <tr>
-                        <th>Cliente</th>
-                        <th>Monto</th>
-                        <th>Interés</th>
-                        <th>Saldo</th>
-                        <th>Frecuencia</th>
-                        <th>Estado</th>
+                        <th>Profesor</th>
+                        <th>Producto prestado</th>
+                        <th>Fecha de préstamo</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -76,51 +73,48 @@
                     <tr>
                         <td>
                             <strong>Juan Pérez</strong>
-                            <small>Inicio: 01/07/2026</small>
+                            <small>No. Económico: 45872</small>
                         </td>
-                        <td>$5,000</td>
-                        <td>10%</td>
-                        <td>$4,500</td>
-                        <td>Semanal</td>
-                        <td><span class="badge active">Activo</span></td>
+                        <td>
+                            Proyector Epson
+                            <small>Código: MAT-001</small>
+                        </td>
+                        <td>16/06/2026</td>
                         <td class="actions">
-                            <button>👁</button>
-                            <button>✏</button>
-                            <button>💰</button>
+                            <button class="btn-return" onclick="abrirDevolucion()">Devolver</button>
+                            <button class="btn-pdf">PDF</button>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
                             <strong>María López</strong>
-                            <small>Inicio: 15/06/2026</small>
+                            <small>No. Económico: 38219</small>
                         </td>
-                        <td>$3,000</td>
-                        <td>8%</td>
-                        <td>$0</td>
-                        <td>Quincenal</td>
-                        <td><span class="badge paid">Pagado</span></td>
+                        <td>
+                            Laptop Lenovo
+                            <small>Código: MAT-002</small>
+                        </td>
+                        <td>15/06/2026</td>
                         <td class="actions">
-                            <button>👁</button>
-                            <button>✏</button>
-                            <button>💰</button>
+                            <button class="btn-return" onclick="abrirDevolucion()">Devolver</button>
+                            <button class="btn-pdf">PDF</button>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
                             <strong>Carlos Ruiz</strong>
-                            <small>Inicio: 20/06/2026</small>
+                            <small>No. Económico: 77421</small>
                         </td>
-                        <td>$2,500</td>
-                        <td>12%</td>
-                        <td>$2,300</td>
-                        <td>Semanal</td>
-                        <td><span class="badge late">Vencido</span></td>
+                        <td>
+                            Microscopio
+                            <small>Código: MAT-004</small>
+                        </td>
+                        <td>14/06/2026</td>
                         <td class="actions">
-                            <button>👁</button>
-                            <button>✏</button>
-                            <button>💰</button>
+                            <button class="btn-return" onclick="abrirDevolucion()">Devolver</button>
+                            <button class="btn-pdf">PDF</button>
                         </td>
                     </tr>
                 </tbody>
@@ -216,6 +210,71 @@
         document.getElementById("modalPrestamo").classList.remove("show");
     }
 </script>
+
+        <div class="modal" id="modalDevolucion">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Devolución de material</h2>
+                    <button onclick="cerrarDevolucion()">×</button>
+                </div>
+
+                <form class="loan-form">
+                    <div class="form-group">
+                        <label>Profesor</label>
+                        <input type="text" value="Juan Pérez" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Material</label>
+                        <input type="text" value="Proyector Epson" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha de préstamo</label>
+                        <input type="date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha de devolución</label>
+                        <input type="date">
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Estado del material</label>
+                        <select>
+                            <option>Bueno</option>
+                            <option>Regular</option>
+                            <option>Dañado</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Observaciones</label>
+                        <textarea placeholder="Escribe observaciones de la devolución..."></textarea>
+                    </div>
+
+                    <div class="signature-box full">
+                        Firma del profesor
+                    </div>
+
+                    <div class="modal-actions full">
+                        <button type="button" class="btn-cancel" onclick="cerrarDevolucion()">Cancelar</button>
+                        <button type="button" class="btn-pdf">Generar PDF</button>
+                        <button type="submit" class="btn-save">Guardar devolución</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+        function abrirDevolucion() {
+            document.getElementById("modalDevolucion").classList.add("show");
+        }
+
+        function cerrarDevolucion() {
+            document.getElementById("modalDevolucion").classList.remove("show");
+        }
+        </script>
 
 </body>
 </html>

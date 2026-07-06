@@ -1,0 +1,167 @@
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+    padding: 13px;
+    border: 1px solid #dbe1ea;
+    border-radius: 12px;
+    outline: none;
+}
+
+.filters input {
+    flex: 1;
+}
+
+td small {
+    display: block;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.badge.success {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.badge.warning {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.badge.danger {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.actions button {
+    border: none;
+    background-color: #f1f5f9;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.actions button:hover {
+    background-color: #e2e8f0;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.55);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    width: 100%;
+    max-width: 780px;
+    padding: 25px;
+    border-radius: 18px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header button {
+    border: none;
+    background-color: #f1f5f9;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 4px 10px;
+}
+
+.material-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #334155;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dbe1ea;
+    border-radius: 10px;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: none;
+    height: 90px;
+}
+
+.full {
+    grid-column: 1 / 3;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn-cancel,
+.btn-save {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.btn-save {
+    background-color: #2563eb;
+    color: white;
+}
+
+@media (max-width: 850px) {
+    .filters {
+        flex-direction: column;
+    }
+
+    .material-form {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: 1;
+    }
+}

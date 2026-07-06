@@ -327,3 +327,40 @@ td small {
     background-color: #2563eb;
     color: white;
 }
+
+.btn-return {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-pdf {
+    background-color: white;
+    color: #2563eb;
+    border: 1px solid #2563eb;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-return:hover,
+.btn-pdf:hover {
+    opacity: 0.85;
+}
+
+.signature-box {
+    height: 120px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #64748b;
+    font-weight: bold;
+    background-color: #f8fafc;
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Materiales</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/materiales.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon"><i class="bi bi-box-seam-fill"></i></div>
+            <div>
+                <h2>Préstamos</h2>
+                <span>Panel administrativo</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a href="dashboard.html"><i class="bi bi-house-door-fill"></i> Principal</a>
+            <a href="profesores.html"><i class="bi bi-people-fill"></i> Profesores</a>
+            <a href="materiales.html" class="active"><i class="bi bi-box-seam-fill"></i> Materiales</a>
+            <a href="prestamos.html"><i class="bi bi-clipboard-check-fill"></i> Préstamos</a>
+            <a href="reportes.html"> <i class="bi bi-bar-chart-fill"></i> Reportes</a>
+            <a href="configuracion.html"><i class="bi bi-gear-fill"></i> Configuración</a>
+        </nav>
+
+        <a href="login.html" class="logout"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1>Materiales</h1>
+                <p>Control del inventario disponible para préstamo.</p>
+            </div>
+
+            <button class="btn-primary" onclick="abrirModal()">+ Nuevo material</button>
+        </header>
+
+        <section class="filters">
+            <input type="text" placeholder="Buscar por código, nombre o número de serie...">
+
+            <select>
+                <option>Todas las categorías</option>
+                <option>Inventario</option>
+                <option>Consumo</option>
+            </select>
+
+            <select>
+                <option>Todos los estados</option>
+                <option>Disponible</option>
+                <option>Prestado</option>
+                <option>Mantenimiento</option>
+                <option>Baja</option>
+            </select>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Inventario de materiales</h2>
+                <span>4 materiales</span>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Material</th>
+                        <th>Categoría</th>
+                        <th>No. Serie</th>
+                        <th>Ubicación</th>
+                        <th>Condición</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td><strong>MAT-001</strong></td>
+                        <td>
+                            Proyector Epson
+                            <small>Proyector para aula</small>
+                        </td>
+                        <td>Inventario</td>
+                        <td>EP-98342</td>
+                        <td>Laboratorio A</td>
+                        <td>Bueno</td>
+                        <td><span class="badge success">Disponible</span></td>
+                        <td class="actions">
+                            <button>👁</button>
+                            <button>✏</button>
+                            <button>🗑</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>MAT-002</strong></td>
+                        <td>
+                            Laptop Lenovo
+                            <small>Equipo para prácticas</small>
+                        </td>
+                        <td>Inventario</td>
+                        <td>LN-55421</td>
+                        <td>Almacén</td>
+                        <td>Bueno</td>
+                        <td><span class="badge warning">Prestado</span></td>
+                        <td class="actions">
+                            <button>👁</button>
+                            <button>✏</button>
+                            <button>🗑</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>MAT-003</strong></td>
+                        <td>
+                            Cable HDMI
+                            <small>2 metros</small>
+                        </td>
+                        <td>Inventario</td>
+                        <td>HD-2026</td>
+                        <td>Sala Audiovisual</td>
+                        <td>Regular</td>
+                        <td><span class="badge success">Disponible</span></td>
+                        <td class="actions">
+                            <button>👁</button>
+                            <button>✏</button>
+                            <button>🗑</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>MAT-004</strong></td>
+                        <td>
+                            Microscopio
+                            <small>Equipo de laboratorio</small>
+                        </td>
+                        <td>Inventario</td>
+                        <td>MC-77412</td>
+                        <td>Laboratorio B</td>
+                        <td>Dañado</td>
+                        <td><span class="badge danger">Mantenimiento</span></td>
+                        <td class="actions">
+                            <button>👁</button>
+                            <button>✏</button>
+                            <button>🗑</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+</div>
+
+<div class="modal" id="modalMaterial">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Nuevo Material</h2>
+            <button onclick="cerrarModal()">×</button>
+        </div>
+
+        <form class="material-form">
+            <div class="form-group">
+                <label>Código</label>
+                <input type="text" placeholder="Ej. MAT-005">
+            </div>
+
+            <div class="form-group">
+                <label>Nombre del material</label>
+                <input type="text" placeholder="Ej. Cámara Canon">
+            </div>
+
+            <div class="form-group">
+                <label>Categoría</label>
+                <select>
+                    <option>Inventario</option>
+                    <option>Consumo</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Número de serie</label>
+                <input type="text" placeholder="Ej. SN-12345">
+            </div>
+
+            <div class="form-group">
+                <label>Ubicación</label>
+                <select>
+                    <option>Laboratorio A</option>
+                    <option>Laboratorio B</option>
+                    <option>Almacén</option>
+                    <option>Sala Audiovisual</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Condición física</label>
+                <select>
+                    <option>Bueno</option>
+                    <option>Regular</option>
+                    <option>Dañado</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Estado</label>
+                <select>
+                    <option>Disponible</option>
+                    <option>Prestado</option>
+                    <option>Mantenimiento</option>
+                    <option>Baja</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Responsable</label>
+                <input type="text" placeholder="Encargado del material">
+            </div>
+
+            <div class="form-group full">
+                <label>Descripción</label>
+                <textarea placeholder="Describe el material, accesorios incluidos o detalles importantes..."></textarea>
+            </div>
+
+            <div class="modal-actions full">
+                <button type="button" class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
+                <button type="submit" class="btn-save">Guardar material</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+function abrirModal() {
+    document.getElementById("modalMaterial").classList.add("show");
+}
+
+function cerrarModal() {
+    document.getElementById("modalMaterial").classList.remove("show");
+}
+</script>
+
+</body>
+</html>

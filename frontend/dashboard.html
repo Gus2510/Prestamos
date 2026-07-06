@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Sistema de Préstamos</title>
+    <title>Principal</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 
@@ -12,36 +13,37 @@
 
     <aside class="sidebar">
         <div class="logo">
-            <div class="logo-icon">$</div>
+            <div class="logo-icon"><i class="bi bi-house-door-fill"></i></div>
             <div>
-                <h2>Prestamos</h2>
+                <h2>Préstamos</h2>
                 <span>Panel administrativo</span>
             </div>
         </div>
 
         <nav class="menu">
-            <a href="dashboard.html" class="active">🏠 Dashboard</a>
-            <a href="profesores.html"> 👨‍🏫 Profesores</a>
-            <a href="materiales.html">📦 Materiales</a>
-            <a href="prestamos.html">💵 Préstamos</a>
-            <a href="reportes.html">📊 Reportes</a>
-            <a href="configuracion.html">⚙ Configuración</a>
+            <a href="dashboard.html" class="active"><i class="bi bi-house-door-fill"></i> Principal</a>
+            <a href="profesores.html"><i class="bi bi-people-fill"></i> Profesores</a>
+            <a href="materiales.html"><i class="bi bi-box-seam-fill"></i> Materiales</a>
+            <a href="prestamos.html"><i class="bi bi-clipboard-check-fill"></i> Préstamos</a>
+            <a href="reportes.html"> <i class="bi bi-bar-chart-fill"></i> Reportes</a>
+            <a href="configuracion.html"><i class="bi bi-gear-fill"></i>Configuración</a>
         </nav>
 
-        <a href="login.html" class="logout">🚪 Cerrar sesión</a>
+        <a href="login.html" class="logout"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a>
     </aside>
 
     <main class="main">
 
         <header class="topbar">
             <div>
-                <h1>Dashboard</h1>
+                <h1>Principal</h1>
                 <p>Resumen general del sistema de préstamos</p>
             </div>
 
             <div class="user-box">
                 <input type="text" placeholder="Buscar...">
                 <span class="notification">🔔</span>
+
                 <div class="user">
                     <div class="avatar">G</div>
                     <div>
@@ -52,81 +54,137 @@
             </div>
         </header>
 
-        <section class="summary">
-            <div class="summary-card">
-                <span>Clientes registrados</span>
-                <h3>135</h3>
-                <p class="positive">+12 este mes</p>
+        <section class="summary two-columns">
+            <div class="summary-card icon-card">
+                <div class="card-icon professor-icon">👥</div>
+                <div>
+                    <span>Profesores registrados</span>
+                    <h3>135</h3>
+                    <p class="positive">+12 este mes</p>
+                </div>
             </div>
 
-            <div class="summary-card">
-                <span>Préstamos activos</span>
-                <h3>48</h3>
-                <p class="positive">+5 nuevos</p>
-            </div>
-
-            <div class="summary-card">
-                <span>Pagos del día</span>
-                <h3>$12,350</h3>
-                <p class="positive">Buen avance</p>
-            </div>
-
-            <div class="summary-card warning">
-                <span>Préstamos vencidos</span>
-                <h3>5</h3>
-                <p class="negative">Requieren atención</p>
+            <div class="summary-card icon-card">
+                <div class="card-icon loan-icon">📋</div>
+                <div>
+                    <span>Préstamos activos</span>
+                    <h3>48</h3>
+                    <p class="positive">+5 nuevos</p>
+                </div>
             </div>
         </section>
 
-        <section class="content-grid">
+        <section class="charts-grid">
 
             <div class="panel">
-                <div class="panel-header">
-                    <h2>Actividad reciente</h2>
-                    <a href="#">Ver todo</a>
+                <h2>Equipos más prestados</h2>
+
+                <div class="donut-section">
+                    <div class="donut-chart"></div>
+
+                    <div class="legend">
+                        <p><span class="dot blue"></span> Laptop <strong>42</strong></p>
+                        <p><span class="dot green"></span> Proyector <strong>30</strong></p>
+                        <p><span class="dot yellow"></span> Cámara <strong>24</strong></p>
+                        <p><span class="dot purple"></span> Microscopio <strong>14</strong></p>
+                        <p><span class="dot red"></span> Otros <strong>10</strong></p>
+                    </div>
                 </div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Cliente</th>
-                            <th>Movimiento</th>
-                            <th>Monto</th>
-                            <th>Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Juan Pérez</td>
-                            <td>Pago registrado</td>
-                            <td>$850</td>
-                            <td><span class="badge success">Pagado</span></td>
-                        </tr>
-                        <tr>
-                            <td>María López</td>
-                            <td>Nuevo préstamo</td>
-                            <td>$5,000</td>
-                            <td><span class="badge pending">Activo</span></td>
-                        </tr>
-                        <tr>
-                            <td>Carlos Ruiz</td>
-                            <td>Pago pendiente</td>
-                            <td>$600</td>
-                            <td><span class="badge danger">Vencido</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p class="chart-note">Total de préstamos activos: 120</p>
             </div>
 
-            <div class="panel side-panel">
-                <h2>Acciones rápidas</h2>
+            <div class="panel">
+                <h2>Profesores que más piden prestado</h2>
 
-                <button>+ Nuevo cliente</button>
-                <button>+ Nuevo préstamo</button>
-                <button>Registrar pago</button>
-                <button>Generar reporte</button>
+                <div class="bar-chart">
+                    <div class="bar-row">
+                        <span>Juan Pérez</span>
+                        <div class="bar"><div style="width: 95%;"></div></div>
+                        <strong>12</strong>
+                    </div>
+
+                    <div class="bar-row">
+                        <span>María López</span>
+                        <div class="bar"><div style="width: 75%;"></div></div>
+                        <strong>9</strong>
+                    </div>
+
+                    <div class="bar-row">
+                        <span>Carlos Ruiz</span>
+                        <div class="bar"><div style="width: 60%;"></div></div>
+                        <strong>7</strong>
+                    </div>
+
+                    <div class="bar-row">
+                        <span>Laura Martínez</span>
+                        <div class="bar"><div style="width: 50%;"></div></div>
+                        <strong>6</strong>
+                    </div>
+
+                    <div class="bar-row">
+                        <span>Roberto Sánchez</span>
+                        <div class="bar"><div style="width: 40%;"></div></div>
+                        <strong>5</strong>
+                    </div>
+                </div>
+
+                <p class="chart-note center">Préstamos activos</p>
             </div>
 
+        </section>
+
+        <section class="panel recent-loans">
+            <div class="panel-header">
+                <h2>Préstamos recientes</h2>
+                <a href="prestamos.html">Ver todo</a>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Profesor</th>
+                        <th>Producto prestado</th>
+                        <th>Fecha de préstamo</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Juan Pérez</td>
+                        <td>Proyector Epson</td>
+                        <td>16/06/2026</td>
+                        <td><span class="badge success">Activo</span></td>
+                        <td><button class="btn-return">Devolver</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>María López</td>
+                        <td>Laptop Lenovo</td>
+                        <td>15/06/2026</td>
+                        <td><span class="badge success">Activo</span></td>
+                        <td><button class="btn-return">Devolver</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>Carlos Ruiz</td>
+                        <td>Microscopio</td>
+                        <td>14/06/2026</td>
+                        <td><span class="badge success">Activo</span></td>
+                        <td><button class="btn-return">Devolver</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>Laura Martínez</td>
+                        <td>Cámara Canon</td>
+                        <td>13/06/2026</td>
+                        <td><span class="badge success">Activo</span></td>
+                        <td><button class="btn-return">Devolver</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
     </main>
