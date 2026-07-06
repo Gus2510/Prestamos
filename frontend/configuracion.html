@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Configuración</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/configuracion.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">$</div>
+            <div>
+                <h2>Prestamos</h2>
+                <span>Panel administrativo</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="profesores.html">👨‍🏫 Profesores</a>
+            <a href="materiales.html">📦 Materiales</a>
+            <a href="prestamos.html">📋 Préstamos</a>
+            <a href="reportes.html">📊 Reportes</a>
+            <a href="configuracion.html" class="active">⚙ Configuración</a>
+        </nav>
+
+        <a href="login.html" class="logout">🚪 Cerrar sesión</a>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1>Configuración</h1>
+                <p>Administra usuarios, roles, materiales y parámetros del sistema</p>
+            </div>
+        </header>
+
+        <section class="config-tabs">
+            <button class="tab-btn active" onclick="mostrarTab('usuarios')">Usuarios</button>
+            <button class="tab-btn" onclick="mostrarTab('roles')">Roles y permisos</button>
+            <button class="tab-btn" onclick="mostrarTab('categorias')">Categorías</button>
+            <button class="tab-btn" onclick="mostrarTab('materiales')">Materiales</button>
+            <button class="tab-btn" onclick="mostrarTab('ubicaciones')">Ubicaciones</button>
+            <button class="tab-btn" onclick="mostrarTab('parametros')">Parámetros</button>
+        </section>
+
+        <section id="usuarios" class="tab-content active">
+            <div class="panel-header">
+                <h2>Usuarios del sistema</h2>
+                <button class="btn-primary">+ Nuevo usuario</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Usuario</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gustavo Pérez</td>
+                        <td>gperez</td>
+                        <td>Administrador</td>
+                        <td><span class="badge success">Activo</span></td>
+                    </tr>
+                    <tr>
+                        <td>Laura Martínez</td>
+                        <td>lmartinez</td>
+                        <td>Encargado</td>
+                        <td><span class="badge success">Activo</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="roles" class="tab-content">
+            <div class="panel-header">
+                <h2>Roles y permisos</h2>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Módulo</th>
+                        <th>Administrador</th>
+                        <th>Encargado</th>
+                        <th>Ayudante</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dashboard</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Profesores</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>👁</td>
+                    </tr>
+                    <tr>
+                        <td>Materiales</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>👁</td>
+                    </tr>
+                    <tr>
+                        <td>Préstamos</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Reportes</td>
+                        <td>✅</td>
+                        <td>👁</td>
+                        <td>❌</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="categorias" class="tab-content">
+            <div class="panel-header">
+                <h2>Categorías de material</h2>
+                <button class="btn-primary">+ Nueva categoría</button>
+            </div>
+
+            <div class="cards-list">
+                <div class="item-card">Laptop</div>
+                <div class="item-card">Proyector</div>
+                <div class="item-card">Cámara</div>
+                <div class="item-card">Cable HDMI</div>
+                <div class="item-card">Equipo de laboratorio</div>
+            </div>
+        </section>
+
+        <section id="materiales" class="tab-content">
+            <div class="panel-header">
+                <h2>Materiales</h2>
+                <button class="btn-primary">+ Nuevo material</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Material</th>
+                        <th>Categoría</th>
+                        <th>Ubicación</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MAT-001</td>
+                        <td>Proyector Epson</td>
+                        <td>Proyector</td>
+                        <td>Laboratorio A</td>
+                        <td><span class="badge success">Disponible</span></td>
+                    </tr>
+                    <tr>
+                        <td>MAT-002</td>
+                        <td>Laptop Lenovo</td>
+                        <td>Laptop</td>
+                        <td>Almacén</td>
+                        <td><span class="badge warning">Prestado</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="ubicaciones" class="tab-content">
+            <div class="panel-header">
+                <h2>Ubicaciones</h2>
+                <button class="btn-primary">+ Nueva ubicación</button>
+            </div>
+
+            <div class="cards-list">
+                <div class="item-card">Laboratorio A</div>
+                <div class="item-card">Laboratorio B</div>
+                <div class="item-card">Almacén</div>
+                <div class="item-card">Sala Audiovisual</div>
+            </div>
+        </section>
+
+        <section id="parametros" class="tab-content">
+            <div class="panel-header">
+                <h2>Parámetros del sistema</h2>
+            </div>
+
+            <form class="settings-form">
+                <div>
+                    <label>Máximo de préstamos por profesor</label>
+                    <input type="number" value="3">
+                </div>
+
+                <div>
+                    <label>Días máximos de préstamo</label>
+                    <input type="number" value="7">
+                </div>
+
+                <div>
+                    <label>Días de tolerancia</label>
+                    <input type="number" value="2">
+                </div>
+
+                <button type="submit" class="btn-primary">Guardar cambios</button>
+            </form>
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/configuracion.js"></script>
+</body>
+</html>

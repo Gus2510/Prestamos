@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesores - Sistema de Préstamos</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profesores.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">📦</div>
+
+            <div>
+                <h2>Préstamos</h2>
+                <span>Panel administrativo</span>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="profesores.html" class="active"> 👨‍🏫 Profesores</a>
+            <a href="materiales.html">📦 Materiales</a>
+            <a href="prestamos.html">📋 Préstamos</a>
+            <a href="reportes.html">📊 Reportes</a>
+            <a href="configuracion.html">⚙ Configuración</a>
+        </nav>
+
+        <a href="login.html" class="logout">
+            🚪 Cerrar sesión
+        </a>
+
+    </aside>
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <h1>Profesores</h1>
+                <p>Administración de profesores autorizados para solicitar material.</p>
+            </div>
+            <button class="btn-primary" onclick="abrirModal()"> + Nuevo profesor
+            </button>
+        </header>
+
+        <section class="filters">
+
+            <input
+                type="text"
+                placeholder="Buscar por nombre o número económico">
+
+            <select>
+                <option>Todos</option>
+                <option>Activos</option>
+                <option>Inactivos</option>
+            </select>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Profesores registrados</h2>
+                <span>12 profesores</span>
+            </div>
+            <table>
+                <thead>
+
+                    <tr>
+                        <th>Profesor</th>
+                        <th>No. Económico</th>
+                        <th>Departamento</th>
+                        <th>Teléfono</th>
+                        <th>Materiales prestados</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td>
+                            <strong>Juan Pérez</strong>
+                            <small>
+                                juan.perez@universidad.edu.mx
+                            </small>
+                        </td>
+                        <td>45872</td>
+                        <td>Sistemas</td>
+                        <td>2221234567</td>
+                        <td>2</td>
+                        <td>
+
+                            <span class="badge success">
+                                Activo
+                            </span>
+                        </td>
+
+                        <td class="actions">
+
+                            <button>👁</button>
+                            <button>✏</button>
+                            <button>🗑</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <strong>Laura Martínez</strong>
+                            <small>
+                                laura.martinez@universidad.edu.mx
+                            </small>
+                        </td>
+
+                        <td>38219</td>
+                        <td>Electrónica</td>
+                        <td>2229876543</td>
+                        <td>1</td>
+
+                        <td>
+                            <span class="badge success">
+                                Activo
+                            </span>
+                        </td>
+                        <td class="actions">
+                            <button>👁</button>
+                            <button>✏</button>
+                            <button>🗑</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</div>
+<div class="modal" id="modalProfesor">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>Nuevo Profesor</h2>
+            <button onclick="cerrarModal()">×</button>
+        </div>
+
+        <form class="client-form">
+
+            <div class="form-group">
+                <label>Nombre completo</label>
+                <input type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Número económico</label>
+                <input type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Correo institucional</label>
+                <input type="email">
+            </div>
+
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="text">
+            </div>
+
+            <div class="form-group">
+
+                <label>Departamento</label>
+
+                <select>
+                    <option>Sistemas</option>
+                    <option>Electrónica</option>
+                    <option>Mecánica</option>
+                    <option>Industrial</option>
+                </select>
+
+            </div>
+            <div class="form-group">
+                <label>Estado</label>
+                <select>
+                    <option>Activo</option>
+                    <option>Inactivo</option>
+                </select>
+            </div>
+
+            <div class="modal-actions full">
+                <button
+                    type="button"
+                    class="btn-cancel"
+                    onclick="cerrarModal()">
+                    Cancelar
+                </button>
+                <button
+                    type="submit"
+                    class="btn-save">
+                    Guardar Profesor
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+
+function abrirModal(){
+
+    document
+        .getElementById("modalProfesor")
+        .classList
+        .add("show");
+
+}
+
+function cerrarModal(){
+
+    document
+        .getElementById("modalProfesor")
+        .classList
+        .remove("show");
+
+}
+
+</script>
+
+</body>
+</html>
