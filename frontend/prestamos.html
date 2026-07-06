@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes - Sistema de Préstamos</title>
-    <link rel="stylesheet" href="css/clientes.css">
+    <title>Préstamos - Sistema de Préstamos</title>
+    <link rel="stylesheet" href="css/prestamos.css">
 </head>
 <body>
 
@@ -21,8 +21,8 @@
 
         <nav class="menu">
             <a href="dashboard.html">🏠 Dashboard</a>
-            <a href="clientes.html" class="active">👥 Clientes</a>
-            <a href="prestamos.html">💵 Préstamos</a>
+            <a href="clientes.html">👥 Clientes</a>
+            <a href="prestamos.html" class="active">💵 Préstamos</a>
             <a href="#">💰 Pagos</a>
             <a href="#">📊 Reportes</a>
             <a href="#">⚙ Configuración</a>
@@ -35,27 +35,27 @@
 
         <header class="topbar">
             <div>
-                <h1>Clientes</h1>
-                <p>Administra la información de tus clientes</p>
+                <h1>Préstamos</h1>
+                <p>Administra los préstamos registrados en el sistema</p>
             </div>
 
-            <button class="btn-primary" onclick="abrirModal()">+ Nuevo cliente</button>
+            <button class="btn-primary" onclick="abrirModal()">+ Nuevo préstamo</button>
         </header>
 
         <section class="filters">
-            <input type="text" placeholder="Buscar cliente por nombre, teléfono o dirección...">
+            <input type="text" placeholder="Buscar por cliente, estado o fecha...">
 
             <select>
                 <option>Todos</option>
                 <option>Activos</option>
-                <option>Morosos</option>
-                <option>Inactivos</option>
+                <option>Pagados</option>
+                <option>Vencidos</option>
             </select>
         </section>
 
         <section class="panel">
             <div class="panel-header">
-                <h2>Lista de clientes</h2>
+                <h2>Lista de préstamos</h2>
                 <span>3 registros</span>
             </div>
 
@@ -63,9 +63,10 @@
                 <thead>
                     <tr>
                         <th>Cliente</th>
-                        <th>Teléfono</th>
-                        <th>Dirección</th>
-                        <th>Deuda</th>
+                        <th>Monto</th>
+                        <th>Interés</th>
+                        <th>Saldo</th>
+                        <th>Frecuencia</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
@@ -75,48 +76,51 @@
                     <tr>
                         <td>
                             <strong>Juan Pérez</strong>
-                            <small>Alta: 12/06/2026</small>
+                            <small>Inicio: 01/07/2026</small>
                         </td>
-                        <td>555-123-4567</td>
-                        <td>Col. Centro</td>
+                        <td>$5,000</td>
+                        <td>10%</td>
                         <td>$4,500</td>
+                        <td>Semanal</td>
                         <td><span class="badge active">Activo</span></td>
                         <td class="actions">
                             <button>👁</button>
                             <button>✏</button>
-                            <button>🗑</button>
+                            <button>💰</button>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
                             <strong>María López</strong>
-                            <small>Alta: 18/06/2026</small>
+                            <small>Inicio: 15/06/2026</small>
                         </td>
-                        <td>555-876-5432</td>
-                        <td>Col. Reforma</td>
+                        <td>$3,000</td>
+                        <td>8%</td>
                         <td>$0</td>
-                        <td><span class="badge active">Activo</span></td>
+                        <td>Quincenal</td>
+                        <td><span class="badge paid">Pagado</span></td>
                         <td class="actions">
                             <button>👁</button>
                             <button>✏</button>
-                            <button>🗑</button>
+                            <button>💰</button>
                         </td>
                     </tr>
 
                     <tr>
                         <td>
                             <strong>Carlos Ruiz</strong>
-                            <small>Alta: 25/06/2026</small>
+                            <small>Inicio: 20/06/2026</small>
                         </td>
-                        <td>555-987-6543</td>
-                        <td>Col. Norte</td>
+                        <td>$2,500</td>
+                        <td>12%</td>
                         <td>$2,300</td>
-                        <td><span class="badge late">Moroso</span></td>
+                        <td>Semanal</td>
+                        <td><span class="badge late">Vencido</span></td>
                         <td class="actions">
                             <button>👁</button>
                             <button>✏</button>
-                            <button>🗑</button>
+                            <button>💰</button>
                         </td>
                     </tr>
                 </tbody>
@@ -127,56 +131,77 @@
 
 </div>
 
-<div class="modal" id="modalCliente">
+<div class="modal" id="modalPrestamo">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>Nuevo Cliente</h2>
+            <h2>Nuevo Préstamo</h2>
             <button onclick="cerrarModal()">×</button>
         </div>
 
-        <form class="client-form">
-            <div class="form-group">
-                <label>Nombre</label>
-                <input type="text" placeholder="Ej. Juan">
-            </div>
-
-            <div class="form-group">
-                <label>Apellidos</label>
-                <input type="text" placeholder="Ej. Pérez López">
-            </div>
-
-            <div class="form-group">
-                <label>Teléfono</label>
-                <input type="text" placeholder="Ej. 5551234567">
-            </div>
-
-            <div class="form-group">
-                <label>Dirección</label>
-                <input type="text" placeholder="Calle, número, colonia">
-            </div>
-
-            <div class="form-group">
-                <label>CURP</label>
-                <input type="text" placeholder="CURP del cliente">
-            </div>
-
-            <div class="form-group">
-                <label>INE</label>
-                <input type="text" placeholder="Número de INE">
-            </div>
-
+        <form class="loan-form">
             <div class="form-group full">
+                <label>Cliente</label>
+                <select>
+                    <option>Seleccionar cliente</option>
+                    <option>Juan Pérez</option>
+                    <option>María López</option>
+                    <option>Carlos Ruiz</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Monto del préstamo</label>
+                <input type="number" placeholder="Ej. 5000">
+            </div>
+
+            <div class="form-group">
+                <label>Interés (%)</label>
+                <input type="number" placeholder="Ej. 10">
+            </div>
+
+            <div class="form-group">
+                <label>Número de pagos</label>
+                <input type="number" placeholder="Ej. 12">
+            </div>
+
+            <div class="form-group">
+                <label>Frecuencia de pago</label>
+                <select>
+                    <option>Diario</option>
+                    <option>Semanal</option>
+                    <option>Quincenal</option>
+                    <option>Mensual</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Fecha de inicio</label>
+                <input type="date">
+            </div>
+
+            <div class="form-group">
                 <label>Estado</label>
                 <select>
                     <option>Activo</option>
-                    <option>Inactivo</option>
-                    <option>Moroso</option>
+                    <option>Pagado</option>
+                    <option>Vencido</option>
                 </select>
+            </div>
+
+            <div class="form-group full">
+                <label>Observaciones</label>
+                <textarea placeholder="Notas adicionales del préstamo..."></textarea>
+            </div>
+
+            <div class="loan-summary full">
+                <h3>Resumen del préstamo</h3>
+                <p><strong>Total estimado:</strong> $0.00</p>
+                <p><strong>Pago estimado:</strong> $0.00</p>
             </div>
 
             <div class="modal-actions full">
                 <button type="button" class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
-                <button type="submit" class="btn-save">Guardar cliente</button>
+                <button type="submit" class="btn-save">Guardar préstamo</button>
             </div>
         </form>
     </div>
@@ -184,11 +209,11 @@
 
 <script>
     function abrirModal() {
-        document.getElementById("modalCliente").classList.add("show");
+        document.getElementById("modalPrestamo").classList.add("show");
     }
 
     function cerrarModal() {
-        document.getElementById("modalCliente").classList.remove("show");
+        document.getElementById("modalPrestamo").classList.remove("show");
     }
 </script>
 
