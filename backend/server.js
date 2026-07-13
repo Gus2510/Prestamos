@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const pool = require("./config/db");
 const profesoresRoutes = require("./routes/profesores.routes");
+const materialesRoutes = require("./routes/materiales.routes");
 
 require("dotenv").config();
 
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/profesores", profesoresRoutes);
+app.use("/api/materiales", materialesRoutes);
 
 
 app.get("/", (req, res) => {
