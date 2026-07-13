@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const pool = require("./config/db");
+const profesoresRoutes = require("./routes/profesores.routes");
 
 require("dotenv").config();
 
@@ -9,6 +10,9 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/api/profesores", profesoresRoutes);
+
 
 app.get("/", (req, res) => {
     res.send("Servidor funcionando correctamente");
@@ -35,3 +39,4 @@ app.get("/probar-base-datos", async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
 });
+

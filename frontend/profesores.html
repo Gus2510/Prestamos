@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Profesores - Sistema de Préstamos</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/profesores.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
 </head>
 
 <body>
 
 <div class="layout">
 
+    <!-- Menú lateral -->
     <aside class="sidebar">
 
         <div class="logo">
-            <div class="logo-icon"><i class="bi bi-people-fill"></i></div>
+            <div class="logo-icon">
+                <i class="bi bi-people-fill"></i>
+            </div>
 
             <div>
                 <h2>Préstamos</h2>
@@ -26,207 +38,288 @@
         </div>
 
         <nav class="menu">
-            <a href="dashboard.html"><i class="bi bi-house-door-fill"></i> Principal</a>
-            <a href="prestamos.html"><i class="bi bi-clipboard-check-fill"></i> Préstamos</a>
-            <a href="profesores.html" class="active"> <i class="bi bi-people-fill"></i> Profesores</a>
-            <a href="materiales.html"><i class="bi bi-box-seam-fill"></i> Materiales</a>
-           <!-- <a href="configuracion.html"><i class="bi bi-gear-fill"></i>Configuración</a>-->
-        
+
+            <a href="dashboard.html">
+                <i class="bi bi-house-door-fill"></i>
+                Principal
+            </a>
+
+            <a href="prestamos.html">
+                <i class="bi bi-clipboard-check-fill"></i>
+                Préstamos
+            </a>
+
+            <a href="profesores.html" class="active">
+                <i class="bi bi-people-fill"></i>
+                Profesores
+            </a>
+
+            <a href="materiales.html">
+                <i class="bi bi-box-seam-fill"></i>
+                Materiales
+            </a>
+
         </nav>
 
         <a href="login.html" class="logout">
-            <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+            <i class="bi bi-box-arrow-right"></i>
+            Cerrar sesión
         </a>
 
     </aside>
+
+    <!-- Contenido principal -->
     <main class="main">
+
         <header class="topbar">
+
             <div>
                 <h1>Profesores</h1>
-                <p>Administración de profesores autorizados para solicitar material.</p>
+
+                <p>
+                    Administración de profesores autorizados para
+                    solicitar material.
+                </p>
             </div>
-            <button class="btn-primary" onclick="abrirModal()"> + Nuevo profesor
+
+            <button
+                type="button"
+                class="btn-primary"
+                onclick="abrirModal()"
+            >
+                + Nuevo profesor
             </button>
+
         </header>
 
+        <!-- Buscador y filtro -->
         <section class="filters">
 
             <input
                 type="text"
-                placeholder="Buscar por nombre o número económico">
+                id="buscadorProfesores"
+                placeholder="Buscar por nombre o número económico"
+            >
 
-            <select>
-                <option>Todos</option>
-                <option>Activos</option>
-                <option>Inactivos</option>
+            <select id="filtroEstado">
+                <option value="TODOS">Todos</option>
+                <option value="ACTIVO">Activos</option>
+                <option value="INACTIVO">Inactivos</option>
             </select>
+
         </section>
 
+        <!-- Tabla de profesores -->
         <section class="panel">
+
             <div class="panel-header">
+
                 <h2>Profesores registrados</h2>
-                <span>12 profesores</span>
+
+                <span id="contadorProfesores">
+                    0 profesores
+                </span>
+
             </div>
-            <table>
-                <thead>
 
-                    <tr>
-                        <th>Profesor</th>
-                        <th>No. Económico</th>
-                        <th>Departamento</th>
-                        <th>Teléfono</th>
-                        <th>Materiales prestados</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
+            <div class="table-container">
 
-                        <td>
-                            <strong>Juan Pérez</strong>
-                            <small>
-                                juan.perez@universidad.edu.mx
-                            </small>
-                        </td>
-                        <td>45872</td>
-                        <td>Sistemas</td>
-                        <td>2221234567</td>
-                        <td>2</td>
-                        <td>
+                <table>
 
-                            <span class="badge success">
-                                Activo
-                            </span>
-                        </td>
+                    <thead>
+                        <tr>
+                            <th>Profesor</th>
+                            <th>No. Económico</th>
+                            <th>Teléfono</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
 
-                        <td class="actions">
+                    <tbody id="tablaProfesores">
 
-                            <button>👁</button>
-                            <button>✏</button>
-                            <button>🗑</button>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td
+                                colspan="5"
+                                class="empty-message"
+                            >
+                                Cargando profesores...
+                            </td>
+                        </tr>
 
-                    <tr>
+                    </tbody>
 
-                        <td>
-                            <strong>Laura Martínez</strong>
-                            <small>
-                                laura.martinez@universidad.edu.mx
-                            </small>
-                        </td>
+                </table>
 
-                        <td>38219</td>
-                        <td>Electrónica</td>
-                        <td>2229876543</td>
-                        <td>1</td>
+            </div>
 
-                        <td>
-                            <span class="badge success">
-                                Activo
-                            </span>
-                        </td>
-                        <td class="actions">
-                            <button>👁</button>
-                            <button>✏</button>
-                            <button>🗑</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </section>
+
     </main>
 
 </div>
+
+<!-- Modal para registrar o editar profesor -->
 <div class="modal" id="modalProfesor">
+
     <div class="modal-content">
 
         <div class="modal-header">
-            <h2>Nuevo Profesor</h2>
-            <button onclick="cerrarModal()">×</button>
+
+            <h2 id="tituloModalProfesor">
+                Nuevo profesor
+            </h2>
+
+            <button
+                type="button"
+                class="close-modal"
+                onclick="cerrarModal()"
+                aria-label="Cerrar"
+            >
+                &times;
+            </button>
+
         </div>
 
-        <form class="client-form">
+        <form id="formProfesor" class="client-form">
+
+            <!-- Se usa al editar -->
+            <input
+                type="hidden"
+                id="idProfesor"
+            >
 
             <div class="form-group">
-                <label>Nombre completo</label>
-                <input type="text">
+
+                <label for="nombre">
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Ej. Pedro"
+                    required
+                >
+
             </div>
 
             <div class="form-group">
-                <label>Número económico</label>
-                <input type="text">
+
+                <label for="apellidoP">
+                    Apellido paterno
+                </label>
+
+                <input
+                    type="text"
+                    id="apellidoP"
+                    placeholder="Ej. Martínez"
+                    required
+                >
+
             </div>
 
             <div class="form-group">
-                <label>Correo institucional</label>
-                <input type="email">
+
+                <label for="apellidoM">
+                    Apellido materno
+                </label>
+
+                <input
+                    type="text"
+                    id="apellidoM"
+                    placeholder="Ej. López"
+                >
+
             </div>
 
             <div class="form-group">
-                <label>Teléfono</label>
-                <input type="text">
+
+                <label for="numeroEconomico">
+                    Número económico
+                </label>
+
+                <input
+                    type="text"
+                    id="numeroEconomico"
+                    placeholder="Ej. 1004"
+                    required
+                >
+
             </div>
 
             <div class="form-group">
 
-                <label>Departamento</label>
+                <label for="correo">
+                    Correo institucional
+                </label>
 
-                <select>
-                    <option>Sistemas</option>
-                    <option>Electrónica</option>
-                    <option>Mecánica</option>
-                    <option>Industrial</option>
-                </select>
+                <input
+                    type="email"
+                    id="correo"
+                    placeholder="profesor@universidad.mx"
+                    required
+                >
 
             </div>
+
             <div class="form-group">
-                <label>Estado</label>
-                <select>
-                    <option>Activo</option>
-                    <option>Inactivo</option>
-                </select>
+
+                <label for="telefono">
+                    Teléfono
+                </label>
+
+                <input
+                    type="text"
+                    id="telefono"
+                    placeholder="Ej. 5551118888"
+                >
+
+            </div>
+
+            <div class="form-group full">
+
+                <label for="extension">
+                    Extensión
+                </label>
+
+                <input
+                    type="text"
+                    id="extension"
+                    placeholder="Ej. 104"
+                >
+
             </div>
 
             <div class="modal-actions full">
+
                 <button
                     type="button"
                     class="btn-cancel"
-                    onclick="cerrarModal()">
+                    onclick="cerrarModal()"
+                >
                     Cancelar
                 </button>
+
                 <button
                     type="submit"
-                    class="btn-save">
-                    Guardar Profesor
+                    class="btn-save"
+                    id="btnGuardarProfesor"
+                >
+                    Guardar profesor
                 </button>
+
             </div>
+
         </form>
+
     </div>
+
 </div>
 
-<script>
-
-function abrirModal(){
-
-    document
-        .getElementById("modalProfesor")
-        .classList
-        .add("show");
-
-}
-
-function cerrarModal(){
-
-    document
-        .getElementById("modalProfesor")
-        .classList
-        .remove("show");
-
-}
-
-</script>
+<!-- Toda la lógica está en este archivo -->
+<script src="js/profesores.js"></script>
 
 </body>
+
 </html>

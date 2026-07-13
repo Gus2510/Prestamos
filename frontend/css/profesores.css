@@ -299,3 +299,33 @@ td small {
     background-color: #2563eb;
     color: white;
 }
+
+.empty-message {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+}
+
+.error-message {
+    color: #dc2626;
+}
+
+.badge.inactive {
+    background-color: #e5e7eb;
+    color: #475569;
+}
+
+.badge.inactive {
+    background-color: #e5e7eb;
+    color: #475569;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+}
+
+.error-message {
+    color: #dc2626;
+}
